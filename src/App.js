@@ -1,18 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header.js';
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Customer from './pages/Customer';
+import Home from './page/Home';
+import About from './page/About';
+import Cliente from './page/Cliente';
 
 
 function App() {
   return (
     <Router>
-    <Routes>
-      <Route path="/customer" element={<Customer />} />
-    </Routes>
-  </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/Cliente" element={<Cliente />} />
+      </Routes>
+    </Router>
   );
 }
 

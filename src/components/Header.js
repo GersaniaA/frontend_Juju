@@ -6,7 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'; // Importa el componente Offc
 import Button from 'react-bootstrap/Button'; // Importa el componente Button de Bootstrap
 import NavDropdown from 'react-bootstrap/NavDropdown'; // Importa el componente NavDropDown de Bootstrap
 import Container from 'react-bootstrap/Container'; // Importa el componente Container de Bootstrap
-
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,7 +30,7 @@ function Header() {
             <Nav className="ml-auto">
               <Nav.Link href="#home">Inicio</Nav.Link>
               <NavDropdown title="Clientes" id="Cliente">
-                <NavDropdown.Item href="#">Registrar Cliente</NavDropdown.Item>
+                <NavDropdown.Item href="/Cliente">Registrar Cliente</NavDropdown.Item>
                 <NavDropdown.Item href="#">
                   Actualizar Cliente
                 </NavDropdown.Item>
@@ -107,18 +107,25 @@ function Header() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="flex-column">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <NavDropdown title="Clientes" id="Cliente">
-              <NavDropdown.Item href="#">Registrar Cliente</NavDropdown.Item>
-              <NavDropdown.Item href="#">
-                Actualizar Cliente
+
+          <Nav.Link>
+              <Link to="/" className="link-unstyled">Inicio</Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/about" className="link-unstyled">About</Link>
+            </Nav.Link>
+
+            <NavDropdown title="Cliente" id="Cliente">
+              <NavDropdown.Item>
+                <Link to="/Cliente" className="link-unstyled">Registrar Cliente</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#">Ver Cliente</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                Eliminar Cliente
+              <NavDropdown.Item>
+                <Link to="/Actualizar-cliente" className="link-unstyled">Listar Clientes</Link>
               </NavDropdown.Item>
             </NavDropdown>
+           
+
             <NavDropdown title="Categorias" id="Categoria">
               <NavDropdown.Item href="#">Registrar Categorias</NavDropdown.Item>
               <NavDropdown.Item href="#">

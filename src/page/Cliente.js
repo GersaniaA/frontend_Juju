@@ -3,14 +3,14 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
-function Customer() {
+function Cliente() {
 
   // Crear un estado para cada campo del formulario
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [direccion, setDireccion] = useState('');
-  const [telefono, setTelefono] = useState('');
-  const [correo, setCorreo] = useState('');
+  const [Nombre, setNombre] = useState('');
+  const [Apellido, setApellido] = useState('');
+  const [Direccion, setDireccion] = useState('');
+  const [Telefono, setTelefono] = useState('');
+  const [Correo, setCorreo] = useState('');
 
   // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
@@ -18,11 +18,11 @@ function Customer() {
 
     // Crear un objeto con los datos del formulario
     const formData = {
-      nombre,
-      apellido,
-      direccion,
-      telefono,
-      correo
+      Nombre,
+      Apellido,
+      Direccion,
+      Telefono,
+      Correo
     };
 
     try {
@@ -69,7 +69,7 @@ function Customer() {
                     <Form.Control
                       type="text"
                       placeholder="Ingrese el nombre"
-                      value={nombre}
+                      value={Nombre}
                       onChange={(e) => setNombre(e.target.value)}
                     />
                   </FloatingLabel>
@@ -80,7 +80,7 @@ function Customer() {
                     <Form.Control
                       type="text"
                       placeholder="Ingrese el apellido"
-                      value={apellido}
+                      value={Apellido}
                       onChange={(e) => setApellido(e.target.value)}
                     />
                   </FloatingLabel>
@@ -91,7 +91,7 @@ function Customer() {
                     <Form.Control 
                       type="text" 
                       placeholder="Ingrese la direccion"
-                      value={direccion}
+                      value={Direccion}
                       onChange={(e) => setDireccion(e.target.value)} 
                     />
                   </FloatingLabel>
@@ -102,7 +102,7 @@ function Customer() {
                     <Form.Control 
                       type="text" 
                       placeholder="Ingrese el telefono"
-                      value={telefono}
+                      value={Telefono}
                       onChange={(e) => setTelefono(e.target.value)} 
                     />
                   </FloatingLabel>
@@ -113,7 +113,7 @@ function Customer() {
                     <Form.Control 
                       type="text" 
                       placeholder="Ingrese el correo" 
-                      value={correo}
+                      value={Correo}
                       onChange={(e) => setCorreo(e.target.value)}
                     />
                   </FloatingLabel>
@@ -134,4 +134,4 @@ function Customer() {
   );
 }
 
-export default Customer;
+export default Cliente;
