@@ -30,60 +30,41 @@ function Header() {
             <Nav className="ml-auto">
               <Nav.Link href="#home">Inicio</Nav.Link>
               <NavDropdown title="Clientes" id="Cliente">
-                <NavDropdown.Item href="/Cliente">Registrar Cliente</NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Actualizar Cliente
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">Ver Cliente</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Eliminar Cliente
+                <NavDropdown.Item href="/Cliente" className="link-unstyled">Registrar Cliente</NavDropdown.Item>              
+                <NavDropdown.Item>
+                  <Link to="/ClienteList" className="link-unstyled">Listar Clientes</Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Categorias" id="Categoria">
-                <NavDropdown.Item href="#">Registrar Categorias</NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Actualizar Categoria
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">Ver Categorias</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Eliminar Categoria
+               
+              <NavDropdown title="Categoria" id="Categoria">
+                <NavDropdown.Item href="/Categorias">Registrar Categoria</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/CategoriasList" className="link-unstyled">Listar Categorias</Link>
                 </NavDropdown.Item>
               </NavDropdown>
+
               <NavDropdown title="Producto" id="Producto">
-                <NavDropdown.Item href="#">Registrar Producto</NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Actualizar Producto
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">Ver Producto</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Eliminar Producto
+                <NavDropdown.Item href="/Producto">Registrar Producto</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/ProductoList" className="link-unstyled">Listar Producto</Link>
                 </NavDropdown.Item>
               </NavDropdown>
+
               <NavDropdown title="Pedido" id="pedido">
-                <NavDropdown.Item href="#">Registrar Pedido</NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Actualizar Pedido
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">Ver Pedido</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Eliminar Pedido
+                <NavDropdown.Item href="/Pedido">Registrar Pedido</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/PedidoList" className="link-unstyled">Listar Pedido</Link>
                 </NavDropdown.Item>
               </NavDropdown>
+
+
               <NavDropdown title="Detalle" id="Detalle">
-                <NavDropdown.Item href="#">Registrar Detalle</NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                  Actualizar Detalle
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">Ver Detalle</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Eliminar Detalle
+                <NavDropdown.Item href="/Detalle">Registrar Detalle</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/DetalleList" className="link-unstyled">Listar Detalle</Link>
                 </NavDropdown.Item>
               </NavDropdown>
+
             </Nav>
           </Navbar.Collapse>
           {/* Botón para mostrar/ocultar el menú lateral */}
@@ -121,55 +102,44 @@ function Header() {
                 <Link to="/Cliente" className="link-unstyled">Registrar Cliente</Link>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <Link to="/Actualizar-cliente" className="link-unstyled">Listar Clientes</Link>
+                <Link to="/ClienteList" className="link-unstyled">Actualizar Cliente</Link>
               </NavDropdown.Item>
             </NavDropdown>
-           
 
-            <NavDropdown title="Categorias" id="Categoria">
-              <NavDropdown.Item href="#">Registrar Categorias</NavDropdown.Item>
-              <NavDropdown.Item href="#">
-                Actualizar Categoria
+
+            <NavDropdown title="Categoria" id="Categoria">
+              <NavDropdown.Item>
+                <Link to="/Categorias" className="link-unstyled">Registrar Categoria</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#">Ver Categorias</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                Eliminar Empleado
+              <NavDropdown.Item>
+              <Link to="/CategoriasList" className="link-unstyled">Actualizar Categorias</Link>
               </NavDropdown.Item>
             </NavDropdown>
+
+
             <NavDropdown title="Producto" id="Producto">
-              <NavDropdown.Item href="#">Registrar Producto</NavDropdown.Item>
-              <NavDropdown.Item href="#">
-                Actualizar Producto
+              <NavDropdown.Item>
+                <Link to="/Producto" className="link-unstyled">Registrar Producto</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#">Ver Producto</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                Eliminar Producto
+              <NavDropdown.Item>
+                <Link to="/ProductoList" className="link-unstyled">Actualizar Producto</Link>
               </NavDropdown.Item>
             </NavDropdown>
+
             <NavDropdown title="Pedido" id="Pedido">
-              <NavDropdown.Item href="#">Registrar Pedido</NavDropdown.Item>
-              <NavDropdown.Item href="#">
-                Actualizar Pedido
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#">Ver Pedido</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                Eliminar Pedido
+              <NavDropdown.Item href="/Pedido">Registrar Pedido</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/PedidoList" className="link-unstyled">Actualizar Pedido</Link>
               </NavDropdown.Item>
             </NavDropdown>
+
             <NavDropdown title="Detalle" id="Detalle">
-              <NavDropdown.Item href="#">Registrar Detalle</NavDropdown.Item>
-              <NavDropdown.Item href="#">
-                Actualizar Detalle
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#">Ver Detalle</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
-                Eliminar Detalle
+              <NavDropdown.Item href="/Detalle">Registrar Detalle</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/DetalleList" className="link-unstyled">Actualizar Detalle</Link>
               </NavDropdown.Item>
             </NavDropdown>
+
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>

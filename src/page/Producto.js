@@ -3,14 +3,14 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
-function Cliente() {
+function Producto() {
 
   // Crear un estado para cada campo del formulario
-  const [Nombre, setNombre] = useState('');
-  const [Apellido, setApellido] = useState('');
-  const [Direccion, setDireccion] = useState('');
-  const [Telefono, setTelefono] = useState('');
-  const [Correo, setCorreo] = useState('');
+  const [Nombre_Producto, setNombre_Producto] = useState('');
+  const [Descripcion, setDescripcion] = useState('');
+  const [Precio, setPrecio] = useState('');
+  const [Id_Categoria, setId_Categoria] = useState('');
+  
 
   // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
@@ -18,16 +18,16 @@ function Cliente() {
 
     // Crear un objeto con los datos del formulario
     const formData = {
-      Nombre,
-      Apellido,
-      Direccion,
-      Telefono,
-      Correo
+      Nombre_Producto,
+      Descripcion,
+      Precio,
+      Id_Categoria
+     
     };
 
     try {
       // Realizar una solicitud HTTP al backend para enviar los datos
-      const response = await fetch('http://localhost:5000/crud/createCliente', {
+      const response = await fetch('http://localhost:5000/crud/createProducto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,13 +39,13 @@ function Cliente() {
         // El registro se creó exitosamente
         alert('Registro exitoso');
         // Reiniciar los campos del formulario
-        setNombre('');
-        setApellido('');
-        setDireccion('');
-        setTelefono('');
-        setCorreo('');
+        setNombre_Producto('');
+        setDescripcion('');
+        setPrecio('');
+        setId_Categoria('');
+        
       } else {
-        alert('Error al registrar el cliente');
+        alert('Error al registrar el producto');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -60,64 +60,54 @@ function Cliente() {
       <Container>
         <Card className="mt-3">
           <Card.Body>
-            <Card.Title>Registrar Cliente</Card.Title>
+            <Card.Title>Registrar Producto</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>
               <Row className="g-3">
 
                 <Col sm="6" md="6" lg="6">
-                  <FloatingLabel controlId="nombre" label="Nombre">
+                  <FloatingLabel controlId="nombre_producto" label="Nombre Producto">
                     <Form.Control
                       type="text"
-                      placeholder="Ingrese el nombre"
-                      value={Nombre}
-                      onChange={(e) => setNombre(e.target.value)}
+                      placeholder="Ingrese el nombre del producto"
+                      value={Nombre_Producto}
+                      onChange={(e) => setNombre_Producto(e.target.value)}
                     />
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="6" md="6" lg="6">
-                  <FloatingLabel controlId="apellido" label="Apellido">
+                  <FloatingLabel controlId="descripcion" label="Descripcion">
                     <Form.Control
                       type="text"
-                      placeholder="Ingrese el apellido"
-                      value={Apellido}
-                      onChange={(e) => setApellido(e.target.value)}
+                      placeholder="Ingrese la descripcion"
+                      value={Descripcion}
+                      onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="telefono" label="Telefono">
+                  <FloatingLabel controlId="precio" label="Precio">
                     <Form.Control 
                       type="text" 
-                      placeholder="Ingrese el telefono"
-                      value={Telefono}
-                      onChange={(e) => setTelefono(e.target.value)} 
+                      placeholder="Ingrese el precio"
+                      value={Precio}
+                      onChange={(e) => setPrecio(e.target.value)} 
                     />
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="correo" label="correo">
+                  <FloatingLabel controlId="id_categoria" label="Id Categoria">
                     <Form.Control 
                       type="text" 
-                      placeholder="Ingrese el correo" 
-                      value={Correo}
-                      onChange={(e) => setCorreo(e.target.value)}
+                      placeholder="Ingrese el Id_Categoria"
+                      value={Id_Categoria}
+                      onChange={(e) => setId_Categoria(e.target.value)} 
                     />
                   </FloatingLabel>
                 </Col>
 
-                <Col sm="12" md="12" lg="12">
-                  <FloatingLabel controlId="direccion" label="Direccion">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese la direccion"
-                      value={Direccion}
-                      onChange={(e) => setDireccion(e.target.value)} 
-                    />
-                  </FloatingLabel>
-                </Col>
 
               </Row>
               <div className="center-button">
@@ -134,4 +124,4 @@ function Cliente() {
   );
 }
 
-export default Cliente;
+export default Producto;

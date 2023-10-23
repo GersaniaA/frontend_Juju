@@ -3,14 +3,14 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
-function Cliente() {
+function Pedido() {
 
   // Crear un estado para cada campo del formulario
-  const [Nombre, setNombre] = useState('');
-  const [Apellido, setApellido] = useState('');
+  const [Fecha_Pedido, setFecha_Pedido] = useState('');
   const [Direccion, setDireccion] = useState('');
-  const [Telefono, setTelefono] = useState('');
-  const [Correo, setCorreo] = useState('');
+  const [Estado_Pedido, setEstado_Pedido] = useState('');
+  const [Id_Cliente, setId_Cliente] = useState('');
+  
 
   // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
@@ -18,16 +18,15 @@ function Cliente() {
 
     // Crear un objeto con los datos del formulario
     const formData = {
-      Nombre,
-      Apellido,
+      Fecha_Pedido,
       Direccion,
-      Telefono,
-      Correo
+      Estado_Pedido,
+      Id_Cliente
     };
 
     try {
       // Realizar una solicitud HTTP al backend para enviar los datos
-      const response = await fetch('http://localhost:5000/crud/createCliente', {
+      const response = await fetch('http://localhost:5000/crud/createPedido', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,13 +38,13 @@ function Cliente() {
         // El registro se creó exitosamente
         alert('Registro exitoso');
         // Reiniciar los campos del formulario
-        setNombre('');
-        setApellido('');
+        setFecha_Pedido('');
         setDireccion('');
-        setTelefono('');
-        setCorreo('');
+        setEstado_Pedido('');
+        setId_Cliente('');
+        
       } else {
-        alert('Error al registrar el cliente');
+        alert('Error al registrar el pedido');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -60,64 +59,54 @@ function Cliente() {
       <Container>
         <Card className="mt-3">
           <Card.Body>
-            <Card.Title>Registrar Cliente</Card.Title>
+            <Card.Title>Registrar Pedido</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>
               <Row className="g-3">
 
                 <Col sm="6" md="6" lg="6">
-                  <FloatingLabel controlId="nombre" label="Nombre">
+                  <FloatingLabel controlId="fecha_pedido" label="Fecha Pedido">
                     <Form.Control
-                      type="text"
-                      placeholder="Ingrese el nombre"
-                      value={Nombre}
-                      onChange={(e) => setNombre(e.target.value)}
+                      type="date"
+                      placeholder="Ingrese la fecha del pedido"
+                      value={Fecha_Pedido}
+                      onChange={(e) => setFecha_Pedido(e.target.value)}
                     />
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="6" md="6" lg="6">
-                  <FloatingLabel controlId="apellido" label="Apellido">
+                  <FloatingLabel controlId="direccion" label="Direccion">
                     <Form.Control
                       type="text"
-                      placeholder="Ingrese el apellido"
-                      value={Apellido}
-                      onChange={(e) => setApellido(e.target.value)}
-                    />
-                  </FloatingLabel>
-                </Col>
-
-                <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="telefono" label="Telefono">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el telefono"
-                      value={Telefono}
-                      onChange={(e) => setTelefono(e.target.value)} 
-                    />
-                  </FloatingLabel>
-                </Col>
-
-                <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="correo" label="correo">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el correo" 
-                      value={Correo}
-                      onChange={(e) => setCorreo(e.target.value)}
-                    />
-                  </FloatingLabel>
-                </Col>
-
-                <Col sm="12" md="12" lg="12">
-                  <FloatingLabel controlId="direccion" label="Direccion">
-                    <Form.Control 
-                      type="text" 
                       placeholder="Ingrese la direccion"
                       value={Direccion}
-                      onChange={(e) => setDireccion(e.target.value)} 
+                      onChange={(e) => setDireccion(e.target.value)}
                     />
                   </FloatingLabel>
                 </Col>
+
+                <Col sm="12" md="6" lg="6">
+                  <FloatingLabel controlId="estado_pedido" label="Estado Pedido">
+                    <Form.Control 
+                      type="text" 
+                      placeholder="Ingrese el estado del pedido"
+                      value={Estado_Pedido}
+                      onChange={(e) => setEstado_Pedido(e.target.value)} 
+                    />
+                  </FloatingLabel>
+                </Col>
+
+                <Col sm="12" md="6" lg="6">
+                  <FloatingLabel controlId="id_cliente" label="Id Cliente">
+                    <Form.Control 
+                      type="text" 
+                      placeholder="Ingrese el Id_Cliente"
+                      value={Id_Cliente}
+                      onChange={(e) => setId_Cliente(e.target.value)} 
+                    />
+                  </FloatingLabel>
+                </Col>
+
 
               </Row>
               <div className="center-button">
@@ -134,4 +123,4 @@ function Cliente() {
   );
 }
 
-export default Cliente;
+export default Pedido;
