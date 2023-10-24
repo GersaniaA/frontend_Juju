@@ -13,12 +13,20 @@ function PedidoList() {
       Id_Cliente: '',
   });
 
+  function formatDateForInput(dateTimeString) {
+    const date = new Date(dateTimeString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Agregar ceros iniciales
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   // Función para abrir el modal y pasar los datos del docente seleccionado
   const openModal = (pedido) => {
     setSelectedPedido(pedido);
 
     setFormData({
-      Fecha_Pedido: pedido.Fecha_Pedido,
+      Fecha_Pedido: formatDateForInput(pedido.Fecha_Pedido),
       Direccion: pedido.Direccion,
       Estado_Pedido: pedido.Estado_Pedido,
       Id_Cliente: pedido.Id_Cliente,
@@ -111,7 +119,7 @@ function PedidoList() {
               {pedido.map((Pedido) => (
                 <tr key={Pedido.Id_Pedido}>
                   <td>{Pedido.Id_Pedido}</td>
-                  <td>{Pedido.Fecha_Pedido}</td>
+                  <td>{formatDateForInput(Pedido.Fecha_Pedido)}</td>
                   <td>{Pedido.Direccion}</td>
                   <td>{Pedido.Estado_Pedido}</td>
                   <td>{Pedido.Id_Cliente}</td>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
+import { Table, Button, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
+import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
 function ProductoList() {
-  const [producto, setProducto] = useState([]);
+  const [productos, setProductos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProducto, setSelectedProducto] = useState({});
   const [formData, setFormData] = useState({
@@ -12,6 +13,32 @@ function ProductoList() {
     Precio: '',
     Id_Categoria: '',
   });
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredProductos = productos.filter((producto) => {
+    // Convierte los valores de los campos a minúsculas para realizar una búsqueda insensible a mayúsculas y minúsculas
+    const Id_Producto = producto.Id_Producto;
+    const Nombre_Producto = producto.Nombre_Producto.toLowerCase();
+    const Descripcion = producto.Descripcion.toLowerCase();
+    const Precio = producto.Precio;
+    const Id_Categoria = producto.Id_Categoria;
+    const search = searchQuery.toLowerCase();
+  
+    // Verifica si la cadena de búsqueda se encuentra en algún campo
+    return (
+      Id_Producto === (search) ||
+      Nombre_Producto.includes(search) ||
+      Descripcion.includes(search) ||
+      Precio === (search) ||
+      Id_Categoria === (search)
+    );
+  });
+
 
   // Función para abrir el modal y pasar los datos del docente seleccionado
   const openModal = (producto) => {
@@ -39,7 +66,7 @@ function ProductoList() {
   const loadProducto = () => {
     fetch('http://localhost:5000/crud/readProducto')
       .then((response) => response.json())
-      .then((data) => setProducto(data))
+      .then((data) => setProductos(data))
       .catch((error) => console.error('Error al obtener productos:', error));
   };
 
@@ -86,7 +113,7 @@ function ProductoList() {
   useEffect(() => {
     fetch('http://localhost:5000/crud/readProducto')
       .then((response) => response.json())
-      .then((data) => setProducto(data))
+      .then((data) => setProductos(data))
       .catch((error) => console.error('Error al obtener los productos:', error));
   }, []);
 
@@ -97,6 +124,18 @@ function ProductoList() {
       <Card className="m-3">
         <Card.Body>
           <Card.Title className="mb-3">Listado de Producto</Card.Title>
+          <Row className="mb-3">
+            <Col sm="12" md="6" lg="4">
+              <FloatingLabel controlId="search" label="Buscar">
+                <Form.Control
+                  type="text"
+                  placeholder="Buscar"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </FloatingLabel>
+            </Col>
+          </Row>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -105,19 +144,20 @@ function ProductoList() {
                 <th>Descripcion</th>
                 <th>Precio</th>
                 <th>Id Categoria</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {producto.map((Producto) => (
-                <tr key={Producto.Id_Producto}>
-                  <td>{Producto.Id_Producto}</td>
-                  <td>{Producto.Nombre_Producto}</td>
-                  <td>{Producto.Descripcion}</td>
-                  <td>{Producto.Precio}</td>
-                  <td>{Producto.Id_Categoria}</td>
+            {filteredProductos.map((producto) => (
+                <tr key={producto.Id_Producto}>
+                  <td>{producto.Id_Producto}</td>
+                  <td>{producto.Nombre_Producto}</td>
+                  <td>{producto.Descripcion}</td>
+                  <td>{producto.Precio}</td>
+                  <td>{producto.Id_Categoria}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(Producto)}>Actualizar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(Producto.Id_Producto)}>Eliminar</Button>
+                    <Button variant="primary" onClick={() => openModal(producto)}><FaPencil /></Button>
+                    <Button variant="danger" onClick={() => handleDelete(producto.Id_Producto)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

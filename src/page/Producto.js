@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import '../styles/App.css';
@@ -9,6 +9,9 @@ function Producto() {
   const [Nombre_Producto, setNombre_Producto] = useState('');
   const [Descripcion, setDescripcion] = useState('');
   const [Precio, setPrecio] = useState('');
+
+
+  const [categorias, setCategorias] = useState([]); // Estado para almacenar las especialidades
   const [Id_Categoria, setId_Categoria] = useState('');
   
 
@@ -52,6 +55,19 @@ function Producto() {
       alert('Error en la solicitud al servidor');
     }
   };
+
+  useEffect(() => {
+    // Realiza una solicitud a tu ruta para obtener las especialidades
+    fetch('http://localhost:5000/crud/readCategorias')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el estado con las especialidades obtenidas
+        setCategorias(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener las categorias', error);
+      });
+  }, []);
 
   return(
     <div>
@@ -98,13 +114,19 @@ function Producto() {
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="id_categoria" label="Id Categoria">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el Id_Categoria"
+                  <FloatingLabel controlId="id_categoria" label="Categoria">
+                    <Form.Select
+                      aria-label="Categoria"
                       value={Id_Categoria}
-                      onChange={(e) => setId_Categoria(e.target.value)} 
-                    />
+                      onChange={(e) => setId_Categoria(e.target.value)}
+                    >
+                      <option>Seleccione la categoría</option>
+                      {categorias.map((categoria) => (
+                        <option key={categoria.Id_Categoria} value={categoria.Id_Categoria}>
+                          {categoria.Nombre_Categoria}
+                        </option>
+                      ))}
+                    </Form.Select>
                   </FloatingLabel>
                 </Col>
 
