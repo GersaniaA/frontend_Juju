@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
+import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
 function PedidoList() {
   const [pedido, setPedido] = useState([]);
@@ -124,8 +125,8 @@ function PedidoList() {
                   <td>{Pedido.Estado_Pedido}</td>
                   <td>{Pedido.Id_Cliente}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(Pedido)}>Actualizar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(Pedido.Id_Pedido)}>Eliminar</Button>
+                    <Button variant="primary" onClick={() => openModal(Pedido)}><FaPencil /></Button>
+                    <Button variant="danger" onClick={() => handleDelete(Pedido.Id_Pedido)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

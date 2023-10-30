@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
+import { Table, Button, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
+import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
 function ClienteList() {
-  const [Cliente, setCliente] = useState([]);
+  const [clientes, setCliente] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedCliente, setSelectedCliente] = useState({});
   const [formData, setFormData] = useState({
@@ -13,6 +14,33 @@ function ClienteList() {
     Telefono: '',
     Correo: '',
   });
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredCliente = clientes.filter((cliente) => {
+    // Convierte los valores de los campos a minúsculas para realizar una búsqueda insensible a mayúsculas y minúsculas
+    const Id_Cliente = cliente.Id_Cliente;
+    const Nombre = cliente.Nombre.toLowerCase();
+    const Apellido = cliente.Apellido.toLowerCase();
+    const Direccion = cliente.Direccion.toLowerCase();
+    const Telefono = cliente.Telefono;
+    const Correo = cliente.Correo;
+    const search = searchQuery.toLowerCase();
+
+    return (
+      Id_Cliente === (search) ||
+      Nombre.includes(search) ||
+      Apellido.includes(search) ||
+      Direccion.includes (search) ||
+      Telefono.includes (search) ||
+      Correo.includes (search)
+    );
+  });
+
 
   // Función para abrir el modal y pasar los datos del docente seleccionado
   const openModal = (Cliente) => {
@@ -98,30 +126,43 @@ function ClienteList() {
 
       <Card className="m-3">
         <Card.Body>
-          <Card.Title className="mb-3">Listado de Clientes</Card.Title>
+          <Card.Title className="mb-3">Listado de Cliente</Card.Title>
+          <Row className="mb-3">
+            <Col sm="12" md="6" lg="4">
+              <FloatingLabel controlId="search" label="Buscar">
+                <Form.Control
+                  type="text"
+                  placeholder="Buscar"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </FloatingLabel>
+            </Col>
+          </Row>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>ID</th>
+                <th>ID Cliente</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Direccion</th>
                 <th>Telefono</th>
                 <th>Correo</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {Cliente.map((Cliente) => (
-                <tr key={Cliente.Id_Cliente}>
-                  <td>{Cliente.Id_Cliente}</td>
-                  <td>{Cliente.Nombre}</td>
-                  <td>{Cliente.Apellido}</td>
-                  <td>{Cliente.Direccion}</td>
-                  <td>{Cliente.Telefono}</td>
-                  <td>{Cliente.Correo}</td>
+              {filteredCliente.map((cliente) => (
+                <tr key={cliente.Id_Cliente}>
+                  <td>{cliente.Id_Cliente}</td>
+                  <td>{cliente.Nombre}</td>
+                  <td>{cliente.Apellido}</td>
+                  <td>{cliente.Direccion}</td>
+                  <td>{cliente.Telefono}</td>
+                  <td>{cliente.Correo}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(Cliente)}>Actualizar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(Cliente.Id_Cliente)}>Eliminar</Button>
+                    <Button variant="primary" onClick={() => openModal(cliente)}><FaPencil /></Button>
+                    <Button variant="danger" onClick={() => handleDelete(cliente.Id_Cliente)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

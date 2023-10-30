@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
+import { FaPencil} from 'react-icons/fa6';
 
 function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
@@ -103,8 +104,7 @@ function CategoriaList() {
                   <td>{categoria.Id_Categoria}</td>
                   <td>{categoria.Nombre_Categoria}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(categoria)}>Actualizar</Button>
-                    
+                    <Button variant="primary" onClick={() => openModal(categoria)}><FaPencil /></Button>                    
                   </td>
                 </tr>
               ))}

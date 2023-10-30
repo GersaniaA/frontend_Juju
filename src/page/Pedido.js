@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import '../styles/App.css';
@@ -8,7 +8,11 @@ function Pedido() {
   // Crear un estado para cada campo del formulario
   const [Fecha_Pedido, setFecha_Pedido] = useState('');
   const [Direccion, setDireccion] = useState('');
+
+  const [estados, setEstado_Pedidos] = useState([]); // Estado para almacenar las especialidades
   const [Estado_Pedido, setEstado_Pedido] = useState('');
+
+  const [clientes, setClientes] = useState([]); // Estado para almacenar las especialidades
   const [Id_Cliente, setId_Cliente] = useState('');
   
 
@@ -52,6 +56,33 @@ function Pedido() {
     }
   };
 
+  useEffect(() => {
+    // Realiza una solicitud a tu ruta para obtener las especialidades
+    fetch('http://localhost:5000/crud/readPedido')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el estado con las especialidades obtenidas
+        setEstado_Pedidos(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los pedidos', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Realiza una solicitud a tu ruta para obtener las especialidades
+    fetch('http://localhost:5000/crud/readCliente')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el estado con las especialidades obtenidas
+        setClientes(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los clientes', error);
+      });
+  }, []);
+
+
   return(
     <div>
       <Header />
@@ -86,24 +117,36 @@ function Pedido() {
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="estado_pedido" label="Estado Pedido">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el estado del pedido"
+                  <FloatingLabel controlId="estado_Pedido" label="Estado Pedido">
+                    <Form.Select
+                      aria-label="Estado Pedido"
                       value={Estado_Pedido}
-                      onChange={(e) => setEstado_Pedido(e.target.value)} 
-                    />
+                      onChange={(e) => setEstado_Pedido(e.target.value)}
+                    >
+                      <option>Seleccione el estado del pedido</option>
+                      {estados.map((pedido) => (
+                        <option key={pedido.Id_Pedido} value={pedido.Estado_Pedido}>
+                          {pedido.Estado_Pedido}
+                        </option>
+                      ))}
+                      </Form.Select>
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="id_cliente" label="Id Cliente">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el Id_Cliente"
+                  <FloatingLabel controlId="id_cliente" label="Cliente">
+                    <Form.Select
+                      aria-label="Cliente"
                       value={Id_Cliente}
-                      onChange={(e) => setId_Cliente(e.target.value)} 
-                    />
+                      onChange={(e) => setId_Cliente(e.target.value)}
+                    >
+                      <option>Seleccione el cliente</option>
+                      {clientes.map((cliente) => (
+                        <option key={cliente.Id_Cliente} value={cliente.Id_Cliente}>
+                          {cliente.Nombre} {cliente.Apellido}
+                        </option>
+                      ))}
+                      </Form.Select>
                   </FloatingLabel>
                 </Col>
 

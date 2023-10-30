@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
+import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
 function DetalleList() {
   const [detalle, setDetalle] = useState([]);
@@ -112,8 +113,8 @@ function DetalleList() {
                   <td>{Detalle.Id_Producto}</td>
                   <td>{Detalle.Id_Pedido}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(Detalle)}>Actualizar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(Detalle.Id_Detalle)}>Eliminar</Button>
+                    <Button variant="primary" onClick={() => openModal(Detalle)}><FaPencil /></Button>
+                    <Button variant="danger" onClick={() => handleDelete(Detalle.Id_Detalle)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

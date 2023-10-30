@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import '../styles/App.css';
@@ -7,8 +7,13 @@ function Detalle() {
 
   // Crear un estado para cada campo del formulario
   const [Cantidad, setCantidad] = useState('');
+  
+  const [productos, setProductos] = useState([]); // Estado para almacenar las especialidades
   const [Id_Producto, setId_Producto] = useState('');
+
+  const [pedidos, setPedidos] = useState([]); // Estado para almacenar las especialidades
   const [Id_Pedido, setId_Pedido] = useState('');
+  
   
 
   // Función para manejar el envío del formulario
@@ -51,6 +56,33 @@ function Detalle() {
     }
   };
 
+  useEffect(() => {
+    // Realiza una solicitud a tu ruta para obtener las especialidades
+    fetch('http://localhost:5000/crud/readProducto')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el estado con las especialidades obtenidas
+        setProductos(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los productos', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Realiza una solicitud a tu ruta para obtener las especialidades
+    fetch('http://localhost:5000/crud/readPedido')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza el estado con las especialidades obtenidas
+        setPedidos(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los pedidos', error);
+      });
+  }, []);
+
+
   return(
     <div>
       <Header />
@@ -73,25 +105,37 @@ function Detalle() {
                   </FloatingLabel>
                 </Col>
 
-                <Col sm="6" md="6" lg="6">
-                  <FloatingLabel controlId="id_producto" label="Id Producto">
-                    <Form.Control
-                      type="text"
-                      placeholder="Ingrese el Id_Producto"
+                <Col sm="12" md="6" lg="6">
+                  <FloatingLabel controlId="id_producto" label="Productos">
+                    <Form.Select
+                      aria-label="Productos"
                       value={Id_Producto}
                       onChange={(e) => setId_Producto(e.target.value)}
-                    />
+                    >
+                      <option>Seleccione el producto</option>
+                      {productos.map((producto) => (
+                        <option key={producto.Id_Producto} value={producto.Nombre_Producto}>
+                          {producto.Nombre_Producto}
+                        </option>
+                      ))}
+                      </Form.Select>
                   </FloatingLabel>
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="id_pedido" label="Id Pedido">
-                    <Form.Control 
-                      type="text" 
-                      placeholder="Ingrese el Id_Pedido"
-                      value={Id_Pedido}
-                      onChange={(e) => setId_Pedido(e.target.value)} 
-                    />
+                  <FloatingLabel controlId="id_pedido" label="Pedidos">
+                    <Form.Select
+                      aria-label="Pedidos"
+                      value={Id_Producto}
+                      onChange={(e) => setId_Pedido(e.target.value)}
+                    >
+                      <option>Seleccione el pedido</option>
+                      {pedidos.map((pedido) => (
+                        <option key={Id_Pedido} value={pedido.Id_Pedido}>
+                          {pedido.Id_Pedido}
+                        </option>
+                      ))}
+                      </Form.Select>
                   </FloatingLabel>
                 </Col>
 
