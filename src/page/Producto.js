@@ -3,16 +3,32 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
+
 function Producto() {
 
   // Crear un estado para cada campo del formulario
   const [Nombre_Producto, setNombre_Producto] = useState('');
   const [Descripcion, setDescripcion] = useState('');
   const [Precio, setPrecio] = useState('');
-
+  const [Existencia, setExistencia] = useState('');
 
   const [categorias, setCategorias] = useState([]); // Estado para almacenar las especialidades
   const [Id_Categoria, setId_Categoria] = useState('');
+
+  const [imagen, setImagen] = useState([]);
+
+  const handleImagenChange = (event) => {
+  const file = (event.target.files[0]);
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64String = reader.result;
+    setImagen(base64String);
+  };
+  if (file){
+    reader.readAsDataURL(file);
+  }
+};
   
 
   // Función para manejar el envío del formulario
@@ -24,7 +40,9 @@ function Producto() {
       Nombre_Producto,
       Descripcion,
       Precio,
-      Id_Categoria
+      Existencia,
+      Id_Categoria,
+      imagen
      
     };
 
@@ -45,6 +63,7 @@ function Producto() {
         setNombre_Producto('');
         setDescripcion('');
         setPrecio('');
+        setExistencia('');
         setId_Categoria('');
         
       } else {
@@ -114,6 +133,17 @@ function Producto() {
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
+                  <FloatingLabel controlId="existencia" label="Existencia">
+                    <Form.Control 
+                      type="number" 
+                      placeholder="Ingrese la existencia "
+                      value={Existencia}
+                      onChange={(e) => setExistencia(e.target.value)} 
+                    />
+                  </FloatingLabel>
+                </Col>
+
+                <Col sm="12" md="6" lg="6">
                   <FloatingLabel controlId="id_categoria" label="Categoria">
                     <Form.Select
                       aria-label="Categoria"
@@ -128,6 +158,17 @@ function Producto() {
                       ))}
                     </Form.Select>
                   </FloatingLabel>
+                </Col>
+
+                <Col sm="12" md="6" lg="6">
+                  <Form.Group controlId="imagen" className="" >
+                    <Form.Control 
+                      type="file" 
+                      accept=".jpg, .png, .jpeg"
+                      size="lg"
+                      onChange= {handleImagenChange} 
+                    />
+                  </Form.Group>
                 </Col>
 
 

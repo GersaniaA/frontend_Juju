@@ -11,8 +11,27 @@ function ProductoList() {
     Nombre_Producto: '',
     Descripcion: '',
     Precio: '',
+    Existencia: '',
     Id_Categoria: '',
+    imagen: ''
   });
+
+  const handleImagenChange = (event) => {
+    const file = event.target.files[0]; // Obtener el primer archivo seleccionado
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64String = reader.result; // Obtener la imagen en formato base64
+      setFormData({
+        ...formData,
+        imagen: base64String
+      });
+    }; 
+    if (file) {
+      reader.readAsDataURL(file); // Lee el contenido del archivo como base64
+    }
+  };
+
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -26,6 +45,7 @@ function ProductoList() {
     const Nombre_Producto = producto.Nombre_Producto.toLowerCase();
     const Descripcion = producto.Descripcion.toLowerCase();
     const Precio = producto.Precio;
+    const Existencia = producto.Existencia;
     const Id_Categoria = producto.Id_Categoria;
     const search = searchQuery.toLowerCase();
   
@@ -35,6 +55,7 @@ function ProductoList() {
       Nombre_Producto.includes(search) ||
       Descripcion.includes(search) ||
       Precio === (search) ||
+      Existencia === (search) ||
       Id_Categoria === (search)
     );
   });
@@ -48,7 +69,9 @@ function ProductoList() {
       Nombre_Producto: producto.Nombre_Producto,
       Descripcion: producto.Descripcion,
       Precio: producto.Precio,
+      Existencia: producto.Existencia,
       Id_Categoria: producto.Id_Categoria,
+      imagen: producto.imagen
     });
     setShowModal(true);
   };
@@ -143,8 +166,9 @@ function ProductoList() {
                 <th>Nombre Producto</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
+                <th>Existencia</th>
                 <th>Id Categoria</th>
-                <th>Acciones</th>
+                <th>Imagen</th>
               </tr>
             </thead>
             <tbody>
@@ -154,7 +178,12 @@ function ProductoList() {
                   <td>{producto.Nombre_Producto}</td>
                   <td>{producto.Descripcion}</td>
                   <td>{producto.Precio}</td>
+                  <td>{producto.Existencia}</td>
                   <td>{producto.Id_Categoria}</td>
+                  <td>
+                  
+                    <img src={producto.imagen} alt={producto.nombre} style={{width: '50px'}} />
+                  </td>
                   <td>
                     <Button variant="primary" onClick={() => openModal(producto)}><FaPencil /></Button>
                     <Button variant="danger" onClick={() => handleDelete(producto.Id_Producto)}><FaTrashCan /></Button>
@@ -214,6 +243,19 @@ function ProductoList() {
                                 </FloatingLabel>
                             </Col>
 
+                            
+                            <Col sm="12" md="6" lg="6">
+                                <FloatingLabel controlId="Existencia" label="Existencia">
+                                    <Form.Control 
+                                    type="number" 
+                                    placeholder="Ingrese la existencia del producto"
+                                    value={formData.Existencia}
+                                    name="Existencia"
+                                    onChange={handleFormChange}
+                                    />
+                                </FloatingLabel>
+                            </Col>
+
                             <Col sm="12" md="12" lg="6">
                                 <FloatingLabel controlId="Id_Categoria" label="Id Categoria">
                                     <Form.Control 
@@ -224,6 +266,18 @@ function ProductoList() {
                                     onChange={handleFormChange}
                                     />
                                 </FloatingLabel>
+                            </Col>
+
+                            <Col sm="12" md="12" lg="12">
+                              <Form.Group controlId="imagen" className="" >
+                                <Form.Control 
+                                  type="file" 
+                                  accept=".jpg, .png, .jpeg"
+                                  size="lg"
+                                  name="imagen"
+                                  onChange={handleImagenChange}
+                                />
+                              </Form.Group>
                             </Col>
 
                         </Row>
