@@ -14,6 +14,8 @@ import ProductoList from './page/ProductoList';
 import PedidoList from './page/PedidoList';
 import DetalleList from './page/DetalleList';
 import Login from './page/Login';
+import Galeria from './page/Galeria';
+import Estadisticas from './page/Estadisticas';
 
 
 function App() {
@@ -34,8 +36,10 @@ function App() {
         <Route path="/ClienteList" element={<ClienteList rol={userRol} />} />
         <Route path="/CategoriasList" element={<CategoriasList rol={userRol} />} />
         <Route path="/ProductoList" element={<ProductoList rol={userRol} />} />
+        <Route path="/galeria" element={<Galeria rol={userRol} />} />
         <Route path="/PedidoList" element={<PedidoList rol={userRol} />} />
         <Route path="/DetalleList" element={<DetalleList rol={userRol} />} />
+        <Route path="/estadisticas" element={<Estadisticas rol={userRol} />} />
       </Routes>
     </Router>
   );

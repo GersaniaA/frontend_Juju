@@ -59,6 +59,10 @@ function Header({ rol }) {
               </NavDropdown.Item>
             </NavDropdown>
 
+            <Nav.Link>
+                    <Link to="/galeria" className="link-unstyled">Galeria</Link>
+                  </Nav.Link>
+
             <NavDropdown title="Pedido" id="pedido">
               <NavDropdown.Item href="/Pedido">Registrar Pedido</NavDropdown.Item>
               <NavDropdown.Item>
@@ -73,6 +77,10 @@ function Header({ rol }) {
                 <Link to="/DetalleList" className="link-unstyled">Listar Detalle</Link>
               </NavDropdown.Item>
             </NavDropdown>
+
+            <Nav.Link>
+                    <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
+                  </Nav.Link>
 
           </Nav>
         </Navbar.Collapse>

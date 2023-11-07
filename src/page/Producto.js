@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import '../styles/App.css';
 
 
-function Producto() {
+function Producto({ rol }) {
 
   // Crear un estado para cada campo del formulario
   const [Nombre_Producto, setNombre_Producto] = useState('');
@@ -90,10 +90,10 @@ function Producto() {
 
   return(
     <div>
-      <Header />
+      <Header rol={ rol } />
       
       <Container>
-        <Card className="mt-3">
+        <Card className="margen-contenedor">
           <Card.Body>
             <Card.Title>Registrar Producto</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>
