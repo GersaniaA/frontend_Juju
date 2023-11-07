@@ -88,7 +88,7 @@ function Detalle() {
       <Header />
       
       <Container>
-        <Card className="mt-3">
+        <Card className="margen-contenedor">
           <Card.Body>
             <Card.Title>Registrar Detalle</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>

@@ -93,7 +93,7 @@ function DetalleList() {
     <div>
       <Header />
 
-      <Card className="m-3">
+      <Card className="margen-contenedor">
         <Card.Body>
           <Card.Title className="mb-3">Listado de Detalle</Card.Title>
           <Table striped bordered hover>

@@ -17,10 +17,10 @@ function Header({ rol }) {
 
   return (
     <div>
-    {rol === 'admin' && ( 
+    {'admin' === 'admin' && ( 
       <div>      
         {/* Navbar principal */}
-      <Navbar className="navbar-color" variant="dark" expand="md">
+      <Navbar className="navbar-color" variant="dark" expand="md" fixed='top'>
       <Container>
         <Navbar.Brand href="#home">Juju_Jewels</Navbar.Brand>
         <Navbar.Toggle 

@@ -48,7 +48,7 @@ function Categorias() {
       <Header />
       
       <Container>
-        <Card className="mt-3">
+        <Card className="margen-contenedor">
           <Card.Body>
             <Card.Title>Registrar Categorias</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>

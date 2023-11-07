@@ -21,14 +21,14 @@ function Producto({ rol }) {
   const file = (event.target.files[0]);
 
   const reader = new FileReader();
-  reader.onload = () => {
-    const base64String = reader.result;
-    setImagen(base64String);
+    reader.onload = () => {
+      const base64String = reader.result;
+      setImagen(base64String);
+    };
+    if (file){
+      reader.readAsDataURL(file);
+    }
   };
-  if (file){
-    reader.readAsDataURL(file);
-  }
-};
   
 
   // Función para manejar el envío del formulario
@@ -43,7 +43,6 @@ function Producto({ rol }) {
       Existencia,
       Id_Categoria,
       imagen
-     
     };
 
     try {
@@ -65,7 +64,6 @@ function Producto({ rol }) {
         setPrecio('');
         setExistencia('');
         setId_Categoria('');
-        
       } else {
         alert('Error al registrar el producto');
       }
@@ -91,7 +89,6 @@ function Producto({ rol }) {
   return(
     <div>
       <Header rol={ rol } />
-      
       <Container>
         <Card className="margen-contenedor">
           <Card.Body>

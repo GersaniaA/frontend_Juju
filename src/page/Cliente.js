@@ -3,7 +3,7 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
-function Cliente() {
+function Cliente({ rol }) {
 
   // Crear un estado para cada campo del formulario
   const [Nombre, setNombre] = useState('');
@@ -55,10 +55,10 @@ function Cliente() {
 
   return(
     <div>
-      <Header />
-      
+      <Header rol={ rol }/>
+      <h1>{ rol }</h1>
       <Container>
-        <Card className="mt-3">
+        <Card className="margen-contenedor">
           <Card.Body>
             <Card.Title>Registrar Cliente</Card.Title>
             <Form className="mt-3" onSubmit={handleSubmit}>

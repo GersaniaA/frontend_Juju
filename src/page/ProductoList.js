@@ -144,7 +144,7 @@ function ProductoList() {
     <div>
       <Header />
 
-      <Card className="m-3">
+      <Card className="margen-contenedor">
         <Card.Body>
           <Card.Title className="mb-3">Listado de Producto</Card.Title>
           <Row className="mb-3">

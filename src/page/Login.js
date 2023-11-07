@@ -28,7 +28,6 @@ const Login = ({ setRol }) => {
   
       if (response.ok) {
         const { rol } = await response.json();
-  
         setRol(rol); // Actualiza el estado del rol solo si las credenciales son correctas
         navigate('/home');
       } else {
