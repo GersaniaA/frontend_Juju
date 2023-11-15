@@ -155,8 +155,8 @@ function Pedido({ rol }) {
         .then((response) => {
           if (response.ok) {
             // Aquí puedes mostrar un mensaje de éxito o reiniciar los estados
-            console.log('Venta registrada con éxito');
-            alert('¡Venta registrada con éxito!');
+            console.log('Pedido registrado con éxito');
+            alert('¡Pedido registrado con éxito!');
             setFecha_Pedido('');
             setDireccion('');
             setDetallesVenta([]);

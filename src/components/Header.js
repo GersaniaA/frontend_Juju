@@ -63,13 +63,9 @@ function Header({ rol }) {
                     <Link to="/galeria" className="link-unstyled">Galeria</Link>
                   </Nav.Link>
 
-            <NavDropdown title="Pedido" id="pedido">
-              <NavDropdown.Item href="/Pedido">Registrar Pedido</NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/PedidoList" className="link-unstyled">Listar Pedido</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-
+            <Nav.Link>
+              <Link to="/pedido" className="link-unstyled">Pedido</Link>
+            </Nav.Link>
 
             <NavDropdown title="Detalle" id="Detalle">
               <NavDropdown.Item href="/Detalle">Registrar Detalle</NavDropdown.Item>
@@ -80,10 +76,6 @@ function Header({ rol }) {
 
             <Nav.Link>
               <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
-            </Nav.Link>
-
-            <Nav.Link>
-              <Link to="/pedido" className="link-unstyled">Pedido</Link>
             </Nav.Link>
 
           </Nav>
