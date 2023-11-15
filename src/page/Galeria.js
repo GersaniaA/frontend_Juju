@@ -63,7 +63,7 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
 
       <Row className="g-3">
         {filteredProductos.map((producto) => (
-          <Col sm="12" md="4" lg="3">
+          <Col sm="4" md="4" lg="3">
             <Card>
               <Card.Img className="image-card" variant="top" src={producto.imagen} alt={producto.Nombre_Producto} />
               <Card.Body>
@@ -72,8 +72,8 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
                   {producto.Descripcion}
                 </Card.Text>
                 <div>
-                  <Badge bg="primary">Almacen: {producto.Existencia}</Badge>
-                  <Badge bg="success">Precio: {producto.Precio}</Badge>
+                  <Badge bg="primary">Existencia: {producto.Existencia}</Badge>
+                  <Badge bg="success">Precio: C${producto.Precio}</Badge>
                  </div>
               </Card.Body>
               <Card.Body>

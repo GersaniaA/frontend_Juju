@@ -177,7 +177,7 @@ function ProductoList() {
                   <td>{producto.Id_Producto}</td>
                   <td>{producto.Nombre_Producto}</td>
                   <td>{producto.Descripcion}</td>
-                  <td>{producto.Precio}</td>
+                  <td>C${producto.Precio}</td>
                   <td>{producto.Existencia}</td>
                   <td>{producto.Id_Categoria}</td>
                   <td>
