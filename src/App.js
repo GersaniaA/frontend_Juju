@@ -6,7 +6,6 @@ import About from './page/About';
 import Cliente from './page/Cliente';
 import Categorias from './page/Categorias';
 import Producto from './page/Producto';
-import Pedido from './page/Pedido';
 import Detalle from './page/Detalle';
 import ClienteList from './page/ClienteList';
 import CategoriasList from './page/CategoriasList';
@@ -16,6 +15,7 @@ import DetalleList from './page/DetalleList';
 import Login from './page/Login';
 import Galeria from './page/Galeria';
 import Estadisticas from './page/Estadisticas';
+import Pedido from './page/Pedido';
 
 
 function App() {
@@ -31,7 +31,6 @@ function App() {
         <Route path="/Cliente" element={<Cliente rol={userRol} />} />
         <Route path="/Categorias" element={<Categorias rol={userRol} />} />
         <Route path="/Producto" element={<Producto rol={userRol} />} />
-        <Route path="/Pedido" element={<Pedido rol={userRol} />} />
         <Route path="/Detalle" element={<Detalle rol={userRol} />} />
         <Route path="/ClienteList" element={<ClienteList rol={userRol} />} />
         <Route path="/CategoriasList" element={<CategoriasList rol={userRol} />} />
@@ -40,6 +39,7 @@ function App() {
         <Route path="/PedidoList" element={<PedidoList rol={userRol} />} />
         <Route path="/DetalleList" element={<DetalleList rol={userRol} />} />
         <Route path="/estadisticas" element={<Estadisticas rol={userRol} />} />
+        <Route path="/Pedido" element={<Pedido rol={userRol} />} />
       </Routes>
     </Router>
   );

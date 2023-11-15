@@ -34,8 +34,8 @@ function Header({ rol }) {
           <Nav className="ml-auto">
 
           <Nav.Link>
-                    <Link to="/" className="link-unstyled">Inicio</Link>
-                  </Nav.Link>
+          <Link to="/" className="link-unstyled">Inicio</Link>
+        </Nav.Link>
 
        
             <NavDropdown title="Clientes" id="Cliente">
@@ -79,8 +79,12 @@ function Header({ rol }) {
             </NavDropdown>
 
             <Nav.Link>
-                    <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
-                  </Nav.Link>
+              <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/pedido" className="link-unstyled">Pedido</Link>
+            </Nav.Link>
 
           </Nav>
         </Navbar.Collapse>
