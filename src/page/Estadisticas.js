@@ -122,13 +122,13 @@ const generarReporteAlmacenImg = async () => {
 
               <Card.Body>
                 <Button onClick={generarReporteAlmacen}>
-                  Generar reporte
+                  Generar listado
                 </Button>
               </Card.Body>
 
               <Card.Body>
                 <Button onClick={generarReporteAlmacenImg}>
-                  Generar reporte con imagen
+                  Generar reporte con grafico
                 </Button>
               </Card.Body>
 
