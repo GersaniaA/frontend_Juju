@@ -78,8 +78,13 @@ function Header({ rol }) {
               <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
             </Nav.Link>
 
+            <Nav.Link>
+                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
+                  </Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
+        
         {/* Botón para mostrar/ocultar el menú lateral */}
         <Button
           variant="outline-light"

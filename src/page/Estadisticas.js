@@ -138,6 +138,8 @@ const generarReporteAlmacenImg = async () => {
         </Row>
       </Container>
 
+      <Footer/>
+
     </div>
   );
 }

@@ -104,7 +104,7 @@ function CategoriaList() {
                   <td>{categoria.Id_Categoria}</td>
                   <td>{categoria.Nombre_Categoria}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(categoria)}><FaPencil /></Button>                    
+                    <Button variant="primary" className='margin-button' onClick={() => openModal(categoria)}><FaPencil /></Button>                    
                   </td>
                 </tr>
               ))}

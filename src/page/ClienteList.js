@@ -161,8 +161,8 @@ function ClienteList() {
                   <td>{cliente.Telefono}</td>
                   <td>{cliente.Correo}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(cliente)}><FaPencil /></Button>
-                    <Button variant="danger" onClick={() => handleDelete(cliente.Id_Cliente)}><FaTrashCan /></Button>
+                    <Button variant="primary" className='margin-button' onClick={() => openModal(cliente)}><FaPencil /></Button>
+                    <Button variant="danger" className='margin-button' onClick={() => handleDelete(cliente.Id_Cliente)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

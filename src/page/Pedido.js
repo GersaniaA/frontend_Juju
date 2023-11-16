@@ -199,6 +199,23 @@ function Pedido({ rol }) {
                   </FloatingLabel>
                 </Col>
 
+                <Col sm="12" md="6" lg="4">
+                  <FloatingLabel controlId="cliente" label="Cliente">
+                    <Form.Control
+                      type="text"
+                      placeholder="Seleccionar Cliente"
+                      name="cliente"
+                      value={selectedCliente ? selectedCliente.Nombre : ''}
+                      readOnly
+                    />
+                    <div className="button-container">
+                      <Button className="search-button" variant="outline-primary" onClick={openClienteModal}>
+                        <FaSearch />
+                      </Button>
+                    </div>
+                  </FloatingLabel>
+                </Col>
+
                 <Col sm="6" md="4" lg="4">
                   <FloatingLabel controlId="direccion" label="Direccion">
                     <Form.Control
@@ -207,6 +224,23 @@ function Pedido({ rol }) {
                       value={Direccion}
                       onChange={(e) => setDireccion(e.target.value)}
                     />
+                  </FloatingLabel>
+                </Col>
+
+                <Col sm="12" md="6" lg="4">
+                  <FloatingLabel controlId="producto" label="Producto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Seleccionar Producto"
+                      name="producto"
+                      value={selectedProducto ? selectedProducto.Nombre_Producto : ''}
+                      readOnly
+                    />
+                    <div className="button-container">
+                      <Button className="search-button" variant="outline-primary" onClick={openProductoModal}>
+                        <FaSearch />
+                      </Button>
+                    </div>
                   </FloatingLabel>
                 </Col>
 
@@ -231,39 +265,6 @@ function Pedido({ rol }) {
                   </FloatingLabel>
                 </Col>
 
-                <Col sm="12" md="6" lg="4">
-                  <FloatingLabel controlId="cliente" label="Cliente">
-                    <Form.Control
-                      type="text"
-                      placeholder="Seleccionar Cliente"
-                      name="cliente"
-                      value={selectedCliente ? selectedCliente.Nombre : ''}
-                      readOnly
-                    />
-                    <div className="button-container">
-                      <Button className="search-button" variant="outline-primary" onClick={openClienteModal}>
-                        <FaSearch />
-                      </Button>
-                    </div>
-                  </FloatingLabel>
-                </Col>
-
-                <Col sm="12" md="6" lg="4">
-                  <FloatingLabel controlId="producto" label="Producto">
-                    <Form.Control
-                      type="text"
-                      placeholder="Seleccionar Producto"
-                      name="producto"
-                      value={selectedProducto ? selectedProducto.Nombre_Producto : ''}
-                      readOnly
-                    />
-                    <div className="button-container">
-                      <Button className="search-button" variant="outline-primary" onClick={openProductoModal}>
-                        <FaSearch />
-                      </Button>
-                    </div>
-                  </FloatingLabel>
-                </Col>
 
                 <Col sm="10" md="4" lg="3" className="">
                   <FloatingLabel controlId="cantidad" label="Cantidad">
