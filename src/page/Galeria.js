@@ -3,6 +3,7 @@ import { Row, Col, Container, Card, Badge, Form, FloatingLabel } from 'react-boo
 import Header from '../components/Header';  // Importa el componente Header desde su ubicación relativa
 import '../styles/App.css';  // Importa estilos CSS del archivo App.css
 
+
 function Galeria({ rol }) {  // Define un componente funcional Galeria que recibe props
 
   const [productos, setProductos] = useState([]);  // Crea un estado para almacenar la lista de productos
@@ -63,7 +64,7 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
 
       <Row className="g-3">
         {filteredProductos.map((producto) => (
-          <Col sm="4" md="4" lg="3">
+          <Col sm="4" md="2" lg="2">
             <Card>
               <Card.Img className="image-card" variant="top" src={producto.imagen} alt={producto.Nombre_Producto} />
               <Card.Body>
@@ -84,6 +85,8 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
         ))}
       </Row>
     </Container>
+
+    
 
   </div>
   );

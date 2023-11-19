@@ -185,8 +185,8 @@ function ProductoList() {
                     <img src={producto.imagen} alt={producto.nombre} style={{width: '50px'}} />
                   </td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(producto)}><FaPencil /></Button>
-                    <Button variant="danger" onClick={() => handleDelete(producto.Id_Producto)}><FaTrashCan /></Button>
+                    <Button variant="primary" className='margin-button' onClick={() => openModal(producto)}><FaPencil /></Button>
+                    <Button variant="danger" className='margin-button' onClick={() => handleDelete(producto.Id_Producto)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

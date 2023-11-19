@@ -163,9 +163,81 @@ function Header({ rol }) {
       </Offcanvas.Body>
     </Offcanvas>
     </div>
-       )}
+       )}   
 
-     </div>
+    {rol === 'cliente' && (
+        <div>
+        {/* Navbar principal */}
+        <Navbar className="navbar-color" variant="dark" expand="md">
+          <Container>
+            <Navbar.Brand href="#home">Juju_Jewels</Navbar.Brand>
+            <Navbar.Toggle
+              aria-controls="basic-navbar-nav"
+              style={{ display: 'none' }}
+              className="d-sm-none d-xs-none"
+            />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ml-auto">
+
+                <Nav.Link>
+                  <Link to="/" className="link-unstyled">Inicio</Link>
+                </Nav.Link>
+
+                <Nav.Link>
+                    <Link to="/galeria" className="link-unstyled">Galeria</Link>
+                  </Nav.Link>
+
+                  <Nav.Link>
+                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
+                  </Nav.Link>
+
+              </Nav>
+            </Navbar.Collapse>
+            <Button
+              variant="outline-light"
+              onClick={toggleMenu}
+              className="d-md-none d-block"
+              aria-controls="basic-navbar-nav"
+              aria-expanded={showMenu ? 'true' : 'false'}
+            >
+              Menú
+            </Button>
+          </Container>
+        </Navbar>
+
+        {/* Menú lateral (Offcanvas) */}
+        <Offcanvas show={showMenu} onHide={toggleMenu} placement="start">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Menú</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="flex-column">
+
+              <Nav.Link>
+                <Link to="/" className="link-unstyled">Inicio</Link>
+              </Nav.Link>
+
+              <Nav.Link>
+            <Link to="/about" className="link-unstyled">About</Link>
+          </Nav.Link>
+
+              <Nav.Link>
+                    <Link to="/galeria" className="link-unstyled">Galeria</Link>
+                  </Nav.Link>
+
+                  <Nav.Link>
+                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
+                  </Nav.Link>
+             
+
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
+        </div>
+
+      )}
+   </div>
+
    );
 
 

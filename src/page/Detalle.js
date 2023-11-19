@@ -97,7 +97,7 @@ function Detalle() {
                 <Col sm="6" md="6" lg="6">
                   <FloatingLabel controlId="cantidad" label="Cantidad">
                     <Form.Control
-                      type="text"
+                      type="number"
                       placeholder="Ingrese la cantidad"
                       value={Cantidad}
                       onChange={(e) => setCantidad(e.target.value)}
@@ -126,12 +126,12 @@ function Detalle() {
                   <FloatingLabel controlId="id_pedido" label="Pedidos">
                     <Form.Select
                       aria-label="Pedidos"
-                      value={Id_Producto}
+                      value={Id_Pedido}
                       onChange={(e) => setId_Pedido(e.target.value)}
                     >
                       <option>Seleccione el pedido</option>
                       {pedidos.map((pedido) => (
-                        <option key={Id_Pedido} value={pedido.Id_Pedido}>
+                        <option key={pedido.Id_Pedido} value={pedido.Id_Pedido}>
                           {pedido.Id_Pedido}
                         </option>
                       ))}

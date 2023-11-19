@@ -12,7 +12,8 @@ import html2canvas from 'html2canvas';
 
 function Estadisticas({ rol }) {  // Declaración del componente Estadisticas con el argumento 'rol'
 
-  const [productos, setProductos] = useState([]);  // Declaración del estado 'productos' y su función 'setProductos' a través de useState, con un valor inicial de un array vacío
+  const [productos, setProductos
+  ] = useState([]);  // Declaración del estado 'productos' y su función 'setProductos' a través de useState, con un valor inicial de un array vacío
   const [myChart, setMyChart] = useState(null);  // Declaración del estado 'myChart' y su función 'setMyChart' a través de useState, con un valor inicial de 'null'
 
   useEffect(() => {

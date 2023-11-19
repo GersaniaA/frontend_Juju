@@ -35,7 +35,7 @@ function Categorias() {
         setNombre_Categoria('');
         
       } else {
-        alert('Error al registrar categoria');
+        alert('Insertar datos');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);

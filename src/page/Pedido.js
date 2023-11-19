@@ -304,7 +304,7 @@ function Pedido({ rol }) {
                           <tr key={detalle.Id_Producto}>
                             <td>{detalle.Id_Producto}</td>
                             <td>{detalle.Nombre_Producto}</td>
-                            <td>{detalle.Precio}</td>
+                            <td>C${detalle.Precio}</td>
                             <td>{detalle.Cantidad}</td>
                             <td>{detalle.Cantidad * detalle.Precio}</td>
                             <td className="align-button">
@@ -362,7 +362,7 @@ function Pedido({ rol }) {
             <tbody>
               {filteredClientes.map((cliente) => (
                 <tr key={cliente.Id_Cliente} onClick={() => selectCliente(cliente)}>
-                  <td>{cliente.Nombre}</td>
+                  <td>{cliente.Nombre} {cliente.Apellido}</td>
                 </tr>
               ))}
             </tbody>

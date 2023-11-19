@@ -45,7 +45,7 @@ function Cliente({ rol }) {
         setTelefono('');
         setCorreo('');
       } else {
-        alert('Error al registrar el cliente');
+        alert('Insertar datos en campos vacios');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
@@ -89,7 +89,7 @@ function Cliente({ rol }) {
                 <Col sm="12" md="6" lg="6">
                   <FloatingLabel controlId="telefono" label="Telefono">
                     <Form.Control 
-                      type="text" 
+                      type="number" 
                       placeholder="Ingrese el telefono"
                       value={Telefono}
                       onChange={(e) => setTelefono(e.target.value)} 

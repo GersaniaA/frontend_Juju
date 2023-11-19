@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  } from 'react-bootstrap';
 import Header from '../components/Header';
-import { FaPencil} from 'react-icons/fa6';
+import { FaPencil, FaTrashCan} from 'react-icons/fa6';
 
 function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
@@ -104,7 +104,8 @@ function CategoriaList() {
                   <td>{categoria.Id_Categoria}</td>
                   <td>{categoria.Nombre_Categoria}</td>
                   <td>
-                    <Button variant="primary" className='margin-button' onClick={() => openModal(categoria)}><FaPencil /></Button>                    
+                    <Button variant="primary" className='margin-button' onClick={() => openModal(categoria)}><FaPencil /></Button>
+                    <Button variant="danger" className='margin-button' onClick={() => handleDelete(categoria.Id_Categoria)}><FaTrashCan /></Button>                    
                   </td>
                 </tr>
               ))}
