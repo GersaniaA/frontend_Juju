@@ -56,7 +56,6 @@ function Cliente({ rol }) {
   return(
     <div>
       <Header rol={ rol }/>
-      <h1>{ rol }</h1>
       <Container>
         <Card className="margen-contenedor">
           <Card.Body>

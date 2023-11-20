@@ -3,7 +3,7 @@ import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  }
 import Header from '../components/Header';
 import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
-function PedidoList() {
+function PedidoList({ rol }) {
   const [pedido, setPedido] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedPedido, setSelectedPedido] = useState({});

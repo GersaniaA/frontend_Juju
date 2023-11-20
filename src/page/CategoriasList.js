@@ -3,7 +3,7 @@ import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  }
 import Header from '../components/Header';
 import { FaPencil, FaTrashCan} from 'react-icons/fa6';
 
-function CategoriaList() {
+function CategoriaList({ rol }) {
   const [categorias, setCategorias] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedCategoria, setSelectedCategoria] = useState({});

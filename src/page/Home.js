@@ -3,10 +3,10 @@ import Header from '../components/Header';
 import '../styles/App.css';
 
 function Home({ rol }) {
+  alert(rol);
   return(
     <div>
       <Header rol={ rol } />
-      <h1>{ rol }</h1>
     </div>
   );
 }

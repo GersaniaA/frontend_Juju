@@ -48,7 +48,7 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
     <Header rol={ rol } />
 
     <Container className="margen-contenedor">
-
+    
       <Row className="mb-3">
         <Col sm="6" md="6" lg="4">
           <FloatingLabel controlId="search" label="Buscar">

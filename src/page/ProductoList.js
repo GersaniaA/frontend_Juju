@@ -3,7 +3,7 @@ import { Table, Button, Card, Row, Col, Form, Modal, FloatingLabel  } from 'reac
 import Header from '../components/Header';
 import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
-function ProductoList() {
+function ProductoList({ rol }) {
   const [productos, setProductos] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProducto, setSelectedProducto] = useState({});

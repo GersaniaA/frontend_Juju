@@ -3,7 +3,7 @@ import { Table, Button, Container, Card, Row, Col, Form, Modal, FloatingLabel  }
 import Header from '../components/Header';
 import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
-function DetalleList() {
+function DetalleList({ rol }) {
   const [detalle, setDetalle] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedDetalle, setSelectedDetalle] = useState({});

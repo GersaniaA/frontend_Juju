@@ -3,7 +3,7 @@ import { Table, Button, Card, Row, Col, Form, Modal, FloatingLabel  } from 'reac
 import Header from '../components/Header';
 import { FaTrashCan, FaPencil} from 'react-icons/fa6';
 
-function ClienteList() {
+function ClienteList({ rol }) {
   const [clientes, setCliente] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedCliente, setSelectedCliente] = useState({});

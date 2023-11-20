@@ -3,7 +3,7 @@ import { Form, Row, Col, Container, FloatingLabel, Card, Button } from 'react-bo
 import Header from '../components/Header';
 import '../styles/App.css';
 
-function Detalle() {
+function Detalle({ rol }) {
 
   // Crear un estado para cada campo del formulario
   const [Cantidad, setCantidad] = useState('');
