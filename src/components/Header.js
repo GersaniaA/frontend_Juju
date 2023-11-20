@@ -17,7 +17,7 @@ function Header({ rol }) {
 
   return (
     <div>
-    {'admin' === 'admin' && ( 
+    {rol === 'admin' && ( 
       <div>      
         {/* Navbar principal */}
       <Navbar className="navbar-color" variant="dark" expand="md" fixed='top'>
