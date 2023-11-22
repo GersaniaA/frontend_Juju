@@ -91,7 +91,7 @@ function DetalleList({ rol }) {
 
   return (
     <div>
-      <Header />
+      <Header rol={rol}/>
 
       <Card className="margen-contenedor">
         <Card.Body>
@@ -113,8 +113,8 @@ function DetalleList({ rol }) {
                   <td>{Detalle.Id_Producto}</td>
                   <td>{Detalle.Id_Pedido}</td>
                   <td>
-                    <Button variant="primary" onClick={() => openModal(Detalle)}><FaPencil /></Button>
-                    <Button variant="danger" onClick={() => handleDelete(Detalle.Id_Detalle)}><FaTrashCan /></Button>
+                    <Button variant="primary" className='margin-button' onClick={() => openModal(Detalle)}><FaPencil /></Button>
+                    <Button variant="danger" className='margin-button' onClick={() => handleDelete(Detalle.Id_Detalle)}><FaTrashCan /></Button>
                   </td>
                 </tr>
               ))}

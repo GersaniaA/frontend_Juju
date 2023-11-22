@@ -170,10 +170,12 @@ function Pedido({ rol }) {
         .catch((error) => {
           // Aquí maneja los errores de red u otros
           console.error('Error en la solicitud:', error);
+  
         });
     } else {
       alert('Asegúrese de completar la información necesaria para registrar la venta.');
     }
+    
   };
 
 
@@ -388,4 +390,4 @@ function Pedido({ rol }) {
   );
 }
 
-export default Pedido
+export default Pedido;
