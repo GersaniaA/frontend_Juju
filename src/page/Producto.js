@@ -86,6 +86,18 @@ function Producto({ rol }) {
       });
   }, []);
 
+  const handleNombreProductoChange = (e) => {
+    const nuevoNombre = e.target.value.replace(/[^a-zA-Z ]/g, '');
+    setNombre_Producto(nuevoNombre);
+  
+  };
+
+  const handleDescripcionProductoChange = (e) => {
+    const nuevoNombre = e.target.value.replace(/[^a-zA-Z ]/g, '');
+    setDescripcion(nuevoNombre);
+  
+  };
+
   return(
     <div>
       <Header rol={ rol } />
@@ -102,7 +114,7 @@ function Producto({ rol }) {
                       type="text"
                       placeholder="Ingrese el nombre del producto"
                       value={Nombre_Producto}
-                      onChange={(e) => setNombre_Producto(e.target.value)}
+                      onChange={handleNombreProductoChange}
                     />
                   </FloatingLabel>
                 </Col>
@@ -113,7 +125,7 @@ function Producto({ rol }) {
                       type="text"
                       placeholder="Ingrese la descripcion"
                       value={Descripcion}
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={handleDescripcionProductoChange}
                     />
                   </FloatingLabel>
                 </Col>

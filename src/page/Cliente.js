@@ -53,9 +53,22 @@ function Cliente({ rol }) {
     }
   };
 
+  
+  const handleNombreClienteChange = (e) => {
+    const nuevoNombre = e.target.value.replace(/[^a-zA-Z ]/g, '');
+    setNombre(nuevoNombre);
+  
+  };
+
+  const handleApellidoClienteChange = (e) => {
+    const nuevoNombre = e.target.value.replace(/[^a-zA-Z ]/g, '');
+    setApellido(nuevoNombre);
+  
+  };
+
   return(
     <div>
-      <Header rol={ rol }/>
+      <Header rol={rol}/>
       <Container>
         <Card className="margen-contenedor">
           <Card.Body>
@@ -69,7 +82,7 @@ function Cliente({ rol }) {
                       type="text"
                       placeholder="Ingrese el nombre"
                       value={Nombre}
-                      onChange={(e) => setNombre(e.target.value)}
+                      onChange={handleNombreClienteChange}
                     />
                   </FloatingLabel>
                 </Col>
@@ -80,7 +93,7 @@ function Cliente({ rol }) {
                       type="text"
                       placeholder="Ingrese el apellido"
                       value={Apellido}
-                      onChange={(e) => setApellido(e.target.value)}
+                      onChange={handleApellidoClienteChange}
                     />
                   </FloatingLabel>
                 </Col>
@@ -97,7 +110,7 @@ function Cliente({ rol }) {
                 </Col>
 
                 <Col sm="12" md="6" lg="6">
-                  <FloatingLabel controlId="correo" label="correo">
+                  <FloatingLabel controlId="correo" label="Correo">
                     <Form.Control 
                       type="text" 
                       placeholder="Ingrese el correo" 

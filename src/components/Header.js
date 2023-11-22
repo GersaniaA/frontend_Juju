@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'; // Importa el componente Button de 
 import NavDropdown from 'react-bootstrap/NavDropdown'; // Importa el componente NavDropDown de Bootstrap
 import Container from 'react-bootstrap/Container'; // Importa el componente Container de Bootstrap
 import { Link } from 'react-router-dom';
+import { FaRightFromBracket } from 'react-icons/fa6';
 
 function Header({ rol }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +15,12 @@ function Header({ rol }) {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+    // Función para cerrar sesión
+    const cerrarSesion = () => {
+      // Eliminar el rol del localStorage al cerrar sesión
+      localStorage.removeItem('userRol');
+    };
 
   return (
     <div>
@@ -34,7 +41,7 @@ function Header({ rol }) {
           <Nav className="ml-auto">
 
           <Nav.Link>
-          <Link to="/" className="link-unstyled">Inicio</Link>
+          <Link to="/home" className="link-unstyled">Inicio</Link>
         </Nav.Link>
 
        
@@ -67,20 +74,13 @@ function Header({ rol }) {
               <Link to="/pedido" className="link-unstyled">Pedido</Link>
             </Nav.Link>
 
-            <NavDropdown title="Detalle" id="Detalle">
-              <NavDropdown.Item href="/Detalle">Registrar Detalle</NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/DetalleList" className="link-unstyled">Listar Detalle</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-
             <Nav.Link>
               <Link to="/estadisticas" className="link-unstyled">Estadísticas</Link>
             </Nav.Link>
 
-            <Nav.Link>
-                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
-                  </Nav.Link>
+             <Nav.Link>
+              <Link to="/" onClick={cerrarSesion} className="link-unstyled"><FaRightFromBracket /></Link>
+                 </Nav.Link>
 
           </Nav>
         </Navbar.Collapse>
@@ -180,7 +180,7 @@ function Header({ rol }) {
               <Nav className="ml-auto">
 
                 <Nav.Link>
-                  <Link to="/" className="link-unstyled">Inicio</Link>
+                  <Link to="/home" className="link-unstyled">Inicio</Link>
                 </Nav.Link>
 
                 <Nav.Link>
@@ -188,8 +188,8 @@ function Header({ rol }) {
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
-                  </Nav.Link>
+              <Link to="/" onClick={cerrarSesion} className="link-unstyled"><FaRightFromBracket /></Link>
+                 </Nav.Link>
 
               </Nav>
             </Navbar.Collapse>
@@ -226,8 +226,8 @@ function Header({ rol }) {
                   </Nav.Link>
 
                   <Nav.Link>
-                    <Link to="/" className="link-unstyled">Cerrar sesión</Link>
-                  </Nav.Link>
+              <Link to="/" onClick={cerrarSesion} className="link-unstyled"><FaRightFromBracket /></Link>
+                 </Nav.Link>
              
 
             </Nav>

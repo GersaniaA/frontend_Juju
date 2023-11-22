@@ -43,6 +43,12 @@ function Categorias({ rol }) {
     }
   };
 
+  const handleNombreCategoriaChange = (e) => {
+    const nuevoNombre = e.target.value.replace(/[^a-zA-Z ]/g, '');
+    setNombre_Categoria(nuevoNombre);
+  
+  };
+
   return(
     <div>
       <Header rol={rol}/>
@@ -60,7 +66,7 @@ function Categorias({ rol }) {
                       type="text"
                       placeholder="Ingrese el nombre de categoria"
                       value={Nombre_Categoria}
-                      onChange={(e) => setNombre_Categoria(e.target.value)}
+                      onChange={ handleNombreCategoriaChange}
                     />
                   </FloatingLabel>
                 </Col>

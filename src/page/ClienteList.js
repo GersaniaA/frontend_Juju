@@ -122,7 +122,7 @@ function ClienteList({ rol }) {
 
   return (
     <div>
-      <Header />
+      <Header rol={rol} />
 
       <Card className="margen-contenedor">
         <Card.Body>

@@ -306,7 +306,7 @@ function Pedido({ rol }) {
                             <td>{detalle.Nombre_Producto}</td>
                             <td>C${detalle.Precio}</td>
                             <td>{detalle.Cantidad}</td>
-                            <td>{detalle.Cantidad * detalle.Precio}</td>
+                            <td>C${detalle.Cantidad * detalle.Precio}</td>
                             <td className="align-button">
                               <Button 
                                 size="sm"

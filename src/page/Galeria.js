@@ -43,6 +43,8 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
       .catch((error) => console.error('Error al obtener los productos:', error));  // Maneja errores en la obtención de productos
   }, []);  // Se ejecuta solo en la primera renderización del componente
 
+
+
   return (
     <div>
     <Header rol={ rol } />
@@ -64,7 +66,7 @@ function Galeria({ rol }) {  // Define un componente funcional Galeria que recib
 
       <Row className="g-3">
         {filteredProductos.map((producto) => (
-          <Col sm="4" md="2" lg="2">
+          <Col sm="4" md="4" lg="4">
             <Card>
               <Card.Img className="image-card" variant="top" src={producto.imagen} alt={producto.Nombre_Producto} />
               <Card.Body>
